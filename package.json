@@ -1,0 +1,23 @@
+{
+  "name": "pp-jslib",
+  "version": "1.0.0",
+  "description": "lightweight js library for common blocks",
+  "main": "index.js",
+  "scripts": {
+    "run": "src/index.html",
+    "build": "rollup -c" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paprajapati9/pp-jslib.git"
+  },
+  "author": "Pankaj Prajapati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paprajapati9/pp-jslib/issues"
+  },
+  "homepage": "https://github.com/paprajapati9/pp-jslib#readme",
+  "devDependencies": {
+    "rollup": "^2.38.5"
+  }
+}
