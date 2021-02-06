@@ -16,24 +16,27 @@ export default function createTimer() {
 
 		let container = this.container;
 		container.innerHTML = `
-		<div id="clockdiv"> 
-		<div> 
-			<span class="days" id="day"></span> 
-			<div class="smalltext">Days</div> 
-		</div> 
-		<div> 
-			<span class="hours" id="hour"></span> 
-			<div class="smalltext">Hours</div> 
-		</div> 
-		<div> 
-			<span class="minutes" id="minute"></span> 
-			<div class="smalltext">Minutes</div> 
-		</div> 
-		<div> 
-			<span class="seconds" id="second"></span> 
-			<div class="smalltext">Seconds</div> 
-		</div> 
-		</div> 
+		<div class="pp-clock-container">
+			<div class="pp-clock-container-inner"> 
+				<div class="pp-clock-block ${!timeLimit.days ? 'pp-hide-block': ''}"> 
+					<span class="pp-clock-days"></span> 
+					<div class="pp-content-body">Days</div> 
+				</div> 
+				<div class="pp-clock-block ${!timeLimit.hours ? 'pp-hide-block': ''}"> 
+					<span class="pp-clock-hours"></span> 
+					<div class="pp-content-body">Hours</div> 
+				</div> 
+				<div class="pp-clock-block"> 
+					<span class="pp-clock-minutes"></span> 
+					<div class="pp-content-body">Minutes</div> 
+				</div> 
+				<div class="pp-clock-block"> 
+					<span class="pp-clock-seconds"></span> 
+					<div class="pp-content-body">Seconds</div> 
+				</div> 
+			</div> 
+			<div class="pp-clock-deadline"></div>
+		</div>
 		`;
 
 		var deadline = new Date(
@@ -56,17 +59,19 @@ export default function createTimer() {
 		var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
 		var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
 		var seconds = Math.floor((t % (1000 * 60)) / 1000); 
-		document.getElementById("day").innerHTML =days ; 
-		document.getElementById("hour").innerHTML =hours; 
-		document.getElementById("minute").innerHTML = minutes;  
-		document.getElementById("second").innerHTML =seconds;  
+		container.querySelector(".pp-clock-days").innerHTML =days ; 
+		container.querySelector(".pp-clock-hours").innerHTML =hours; 
+		container.querySelector(".pp-clock-minutes").innerHTML = minutes;  
+		container.querySelector(".pp-clock-seconds").innerHTML =seconds; 
 		if (t < 0) { 
 				clearInterval(x); 
-				document.getElementById("demo").innerHTML = "TIME UP"; 
-				document.getElementById("day").innerHTML ='0'; 
-				document.getElementById("hour").innerHTML ='0'; 
-				document.getElementById("minute").innerHTML ='0' ;  
-				document.getElementById("second").innerHTML = '0'; } 
+				var timeup = container.querySelector(".pp-clock-deadline");
+				timeup.classList.add('pp-deadline-met');
+				timeup.innerHTML = "TIME UP"; 
+				container.querySelector(".pp-clock-days").innerHTML ='0'; 
+				container.querySelector(".pp-clock-hours").innerHTML ='0'; 
+				container.querySelector(".pp-clock-minutes").innerHTML ='0' ;  
+				container.querySelector(".pp-clock-seconds").innerHTML = '0'; } 
 		}, 1000); 
 	})
 }
