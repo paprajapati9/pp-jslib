@@ -12,12 +12,18 @@
     <div id="pp-timer-selector"></div>
     <script>
         let ppblocks = new PPjslib.Blocks({
-          selector: "pp-timer-selector",
-          timeLimit: {
+            selector: "pp-timer-selector",
+            timeLimit: {
                 hours: 0,
                 minutes: 0,
                 seconds: 10
-          }
+            },
+            afterOpen: function test(params) {
+                console.log("before open testing");
+            },
+            afterClose: function aftertest(params) {
+                console.log("after deadline reached testing");
+            }
         });
         ppblocks.createTimer();
     </script>

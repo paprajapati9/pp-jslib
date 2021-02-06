@@ -4,6 +4,13 @@ export default function createTimer() {
 
 	window.addEventListener('DOMContentLoaded', ()=>{
 		
+		// calling after open function
+		this.afterOpen();
+
+		var afterClose = this.afterClose;
+
+		console.log(this, "this");
+
 		var timeLimit = this.timeLimit,
 		currentTime = new Date();
 
@@ -71,7 +78,11 @@ export default function createTimer() {
 				container.querySelector(".pp-clock-days").innerHTML ='0'; 
 				container.querySelector(".pp-clock-hours").innerHTML ='0'; 
 				container.querySelector(".pp-clock-minutes").innerHTML ='0' ;  
-				container.querySelector(".pp-clock-seconds").innerHTML = '0'; } 
+				container.querySelector(".pp-clock-seconds").innerHTML = '0'; 
+
+				//calling after close function
+				afterClose();
+			} 
 		}, 1000); 
 	})
 }
