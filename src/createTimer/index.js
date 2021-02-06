@@ -59,18 +59,17 @@ export default function createTimer() {
 
 		deadline = deadline.getTime();
 		var x = setInterval(function() { 
-		
-		var now = new Date().getTime();
-		var t = deadline - now; 
-		var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
-		var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
-		var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
-		var seconds = Math.floor((t % (1000 * 60)) / 1000); 
-		container.querySelector(".pp-clock-days").innerHTML =days ; 
-		container.querySelector(".pp-clock-hours").innerHTML =hours; 
-		container.querySelector(".pp-clock-minutes").innerHTML = minutes;  
-		container.querySelector(".pp-clock-seconds").innerHTML =seconds; 
-		if (t < 0) { 
+			var now = new Date().getTime(),
+				t = deadline - now,
+				days = Math.floor(t / (1000 * 60 * 60 * 24)),
+				hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)),
+				minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)), 
+				seconds = Math.floor((t % (1000 * 60)) / 1000); 
+			container.querySelector(".pp-clock-days").innerHTML =days ; 
+			container.querySelector(".pp-clock-hours").innerHTML =hours; 
+			container.querySelector(".pp-clock-minutes").innerHTML = minutes;  
+			container.querySelector(".pp-clock-seconds").innerHTML =seconds; 
+			if (t < 0) { 
 				clearInterval(x); 
 				var timeup = container.querySelector(".pp-clock-deadline");
 				timeup.classList.add('pp-deadline-met');
