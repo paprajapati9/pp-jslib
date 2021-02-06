@@ -12,7 +12,12 @@
     <p id="demo"></p>
     <script>
         let ppblocks = new PPjslib.Blocks({
-          selector: "pp-timer-selector"
+          selector: "pp-timer-selector",
+          timeLimit: {
+                hours: 1,
+                minutes: 0,
+                seconds: 5
+          }
         });
         ppblocks.createTimer();
     </script>
